@@ -33,3 +33,4 @@ public:
     else
       throw "Empty!";
   }
+#endif  // INCLUDE_TSTACK_H_
