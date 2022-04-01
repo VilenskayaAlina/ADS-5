@@ -17,13 +17,16 @@ class TStack {
     return top == size - 1;
   }
   void push(T value) {
-  if (isFull())
-    throw "Full!";
-  else
+  if (!isFull())
     arr[++top] = value;
+  else
+    throw "Full!";
   }
   T get() const {
+    if (!isEmpty())
       return arr[top];
+    else
+      throw "Empty!";
   }
   void pop() {
     if (!isEmpty())
