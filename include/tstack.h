@@ -14,16 +14,13 @@ class TStack {
     return top == -1;
   }
   void push(T value) {
-  if (!isFull())
-    arr[++top] = value;
-  else
+  if (isFull())
     throw "Full!";
+  else
+    arr[++top] = value;
   }
   T get() {
-    if (!isEmpty())
       return arr[top];
-    else
-      throw "Empty!";
   }
   void pop() {
     if (!isEmpty())
