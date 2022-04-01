@@ -23,6 +23,7 @@ int priority(char op) {
   case '+': return 2;
   case '*': return 3;
   case '/': return 3;
+  case ' ': return 5;
   default: return 4;
   }
 }
@@ -54,7 +55,7 @@ std::string infx2pstfx(std::string inf) {
         stack.pop();
       }
       else {
-        while ((priority(inf[i]) <= priority(stack.get())) && !stack.isEmpty()) {
+        while ((priority(inf[i]) <= priority(stack.get())) && (!stack.isEmpty())) {
           stack.pop();
         }
         stack.push(inf[i]);
