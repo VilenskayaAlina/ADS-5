@@ -38,23 +38,17 @@ std::string infx2pstfx(std::string inf) {
     } else {
       if (priority(inf[i]) == 0) {
         stack.push(inf[i]);
-      } else {
-        if (stack.isEmpty()) {
+      } else if (stack.isEmpty()) {
           stack.push(inf[i]);
-        }
-      } else {
-        if ((priority(inf[i]) > priority(stack.get()))) {
+      } else if ((priority(inf[i]) > priority(stack.get()))) {
           stack.push(inf[i]);
-        }
-      } else {
-        if (priority(inf[i]) == 1) {
+      } else if (priority(inf[i]) == 1) {
         while (priority(stack.get()) != 0) {
           res.push_back(stack.get());
           res.push_back(prob);
           stack.pop();
         }
         stack.pop();
-        }
       } else {
         while ((priority(inf[i]) <= priority(stack.get())) && (!stack.isEmpty())) {
           res.push_back(stack.get());
@@ -85,14 +79,12 @@ int eval(std::string pref) {
   for (int i = 0; i < pref.size(); i++) {
     if (priority(pref[i]) == 4) {
       res_stack.push(pref[i] - '0');
-    } else {
-      if (priority(pref[i]) < 4) {
+    } else if (priority(pref[i]) < 4) {
       x = res_stack.get();
       res_stack.pop();
       y = res_stack.get();
       res_stack.pop();
       res_stack.push(calculation(pref[i], x, y));
-      }
     }
   }
   res = res_stack.get();
