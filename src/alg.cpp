@@ -27,8 +27,8 @@ int priority(char op) {
   }
 }
 std::string infx2pstfx(std::string inf) {
-  char prob = ' ';
   std::string res;
+  char prob = ' ';
   TStack <char, 50> stack;
   for (int i = 0; i < inf.size(); i++) {
     if (priority(inf[i]) == 4) {
@@ -39,6 +39,12 @@ std::string infx2pstfx(std::string inf) {
       if (priority(inf[i]) == 0) {
         stack.push(inf[i]);
       }
+      else if (stack.isEmpty()) {
+        stack.push(inf[i]);
+      }
+      else if ((priority(inf[i]) > priority(stack.get()))) {
+        stack.push(inf[i]);
+      }
       else if (priority(inf[i]) == 1) {
         while (priority(stack.get()) != 0) {
           res.push_back(stack.get());
@@ -46,12 +52,6 @@ std::string infx2pstfx(std::string inf) {
           stack.pop();
         }
         stack.pop();
-      }
-      else if (stack.isEmpty()) {
-        stack.push(inf[i]);
-      }
-      else if ((priority(inf[i]) > priority(stack.get()))) {
-        stack.push(inf[i]);
       }
       else {
         while ((priority(inf[i]) <= priority(stack.get())) && !stack.isEmpty()) {
@@ -71,18 +71,17 @@ std::string infx2pstfx(std::string inf) {
       res.erase(res.size() - 1);
   }
   return res;
-  return std::string("");
 }
 
 int eval(std::string pref) {
   TStack <int, 50> res_stack;
   int res = 0;
-  int x, y;
+  int x = 0;
+  int y = 0;
   for (int i = 0; i < pref.size(); i++) {
     if (priority(pref[i]) == 4) {
       res_stack.push(pref[i] - '0');
-    }
-    else if (priority(pref[i]) < 4) {
+    } else if (priority(pref[i]) < 4) {
       x = res_stack.get();
       res_stack.pop();
       y = res_stack.get();
