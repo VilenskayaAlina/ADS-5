@@ -56,6 +56,8 @@ std::string infx2pstfx(std::string inf) {
       }
       else {
         while ((priority(inf[i]) <= priority(stack.get())) && (!stack.isEmpty())) {
+          res.push_back(stack.get());
+          res.push_back(prob);
           stack.pop();
         }
         stack.push(inf[i]);
