@@ -14,7 +14,7 @@ class TStack {
     return top == -1;
   }
   bool isFull() const {
-    return peak == size - 1;
+    return top == size - 1;
   }
   void push(T value) {
   if (isFull())
