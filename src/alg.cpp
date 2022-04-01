@@ -30,7 +30,7 @@ int priority(char op) {
 std::string infx2pstfx(std::string inf) {
   std::string res;
   char prob = ' ';
-  TStack <char, 50> stack;
+  TStack <char, 100> stack;
   for (int i = 0; i < inf.size(); i++) {
     if (priority(inf[i]) == 4) {
       res.push_back(inf[i]);
@@ -75,7 +75,7 @@ std::string infx2pstfx(std::string inf) {
 }
 
 int eval(std::string pref) {
-  TStack <int, 50> res_stack;
+  TStack <int, 100> res_stack;
   int res = 0;
   int x = 0;
   int y = 0;
