@@ -10,7 +10,7 @@ class TStack {
 
  public:
   TStack() : top(-1) { }
-  bool isEmpty() {
+  bool isEmpty() const {
     return top == -1;
   }
   bool isFull() const {
@@ -22,7 +22,7 @@ class TStack {
   else
     arr[++top] = value;
   }
-  T get() {
+  T get() const {
       return arr[top];
   }
   void pop() {
