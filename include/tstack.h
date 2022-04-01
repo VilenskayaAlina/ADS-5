@@ -7,6 +7,7 @@ class TStack {
  private:
   T arr[50];
   int top;
+  
  public:
   TStack() : top(-1) { }
   bool isEmpty() {
