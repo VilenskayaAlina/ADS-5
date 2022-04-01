@@ -2,7 +2,7 @@
 #ifndef INCLUDE_TSTACK_H_
 #define INCLUDE_TSTACK_H_
 
-template <typename T, int size>
+template<typename T, int size>
 class TStack {
 private:
   T arr[50];
